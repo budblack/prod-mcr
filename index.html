@@ -29,7 +29,7 @@
             width: calc(100% - 128px);
             height: calc(100% - 128px);
             background: #f0f0f0;
-        }</style></head><body><div class="ext"></div><div class="fram"><div id="mcr"></div></div><script type="text/javascript" src="/201801111823/mcr.js?3321ff264eed8939d51c"></script></body><script id="computePreparefaces" type="javascript/worker">self.addEventListener(
+        }</style></head><body><div class="ext"></div><div class="fram"><div id="mcr"></div></div><script type="text/javascript" src="/201801112041/mcr.js?efbbe90e8a8f10932386"></script></body><script id="computePreparefaces" type="javascript/worker">self.addEventListener(
       'message',
       ({ data: { ilen, jlen, klen } }) => {
       let fs=[];
@@ -115,18 +115,24 @@
       //      console.log('2', new Date());
     });
     workerComputePreparefaces.postMessage({ ilen: 10, jlen: 2, klen: 10 });
-    
-    MCR.sandbox.models.push(
-        {
-          type   : 'gltf',
-          urlGltf: '/testModels/gltf_json/test0804.json',
-          option : {
-            position: {
-              x: 0, y: -2200, z: 0
+
+    for (let i = 0 ; i < 4 ; i++)
+      setTimeout(() => {
+        MCR.sandbox.models.push(
+            {
+              type   : 'gltf',
+              urlGltf: '/testModels/gltf_json/test0804.json?_i=' + i,
+              option : {
+                position: {
+                  x: 0,
+                  y: -2200,
+                  z: 1000 * i
+                }
+              }
             }
-          }
-        }
-    );
+        );
+      }, i * 1000)
+
     //    MCR.sandbox.models.push(
     //        {
     //          type   : 'gltf',
