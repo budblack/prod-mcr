@@ -29,61 +29,7 @@
             width: calc(100% - 128px);
             height: calc(100% - 128px);
             background: #f0f0f0;
-        }</style></head><body><div class="ext"></div><div class="fram"><div id="mcr"></div></div><script type="text/javascript" src="http://mcr.tool.budblack.me/201801112214/mcr.js?084d8e3e55f5c9600a1d"></script></body><script id="computePreparefaces" type="javascript/worker">self.addEventListener(
-      'message',
-      ({ data: { ilen, jlen, klen } }) => {
-      let fs=[];
-        for (let i = 0 ; i < ilen ; i++) {
-          for (let j = 0 ; j < jlen ; j++) {
-            for (let k = 0 ; k < klen ; k++) {
-
-              fs.push(
-                  {
-                    title   : '测试',
-                    vertices: [
-                      {
-                        x: (
-                               Math.random() + i
-                           ) * 10,
-                        y: (
-                               Math.random() + j
-                           ) * 10,
-                        z: (
-                               Math.random() + k
-                           ) * 10
-                      }, {
-                        x: (
-                               Math.random() + i
-                           ) * 10,
-                        y: (
-                               Math.random() + j
-                           ) * 10,
-                        z: (
-                               Math.random() + k
-                           ) * 10
-                      }, {
-                        x: (
-                               Math.random() + i
-                           ) * 10,
-                        y: (
-                               Math.random() + j
-                           ) * 10,
-                        z: (
-                               Math.random() + k
-                           ) * 10
-                      }
-                    ]
-                  }
-              );
-            }
-          }
-        }
-        postMessage(fs);
-      }
-  );</script><script>var blobComputePreparefaces   = new Blob([document.querySelector('#computePreparefaces').textContent]),
-      workerComputePreparefaces = new Worker(URL.createObjectURL(blobComputePreparefaces));
-  
-  window.onload = async function () {
+        }</style></head><body><div class="ext"></div><div class="fram"><div id="mcr"></div></div><script type="text/javascript" src="http://mcr.tool.budblack.me/201801121805/mcr.js?29007baadfa707ca1f8a"></script></body><script>window.onload = async function () {
     if (window.MCR) {
       MCR = await MCR.create('#mcr');
       setTimeout(drawSth, 1000);
@@ -91,52 +37,20 @@
   };
   
   async function drawSth () {
-    let i  = 0;
-    let fs = [];
-    
-    //    console.log('0', new Date());
-    workerComputePreparefaces.addEventListener('message', ({ data: fs }) => {
-      //      console.log('1', new Date());
-      let nlen   = fs.length;
-      let push1k = (fs) => {
-        setTimeout(() => {
-          let fs1k          = fs.slice(0, 100),
-              fsrst         = fs.slice(100);
-          //          console.log('分批导入', fs1k);
-          MCR.sandbox.faces = MCR.sandbox.faces.concat(fs1k);
-          if (fsrst.length) {
-            push1k(fsrst);
-          }
-        }, 100);
-      };
-      push1k(fs);
-      //      MCR.sandbox.faces = fs;
-      MCR.option.mode = 0;
-      //      console.log('2', new Date());
-    });
-    workerComputePreparefaces.postMessage({ ilen: 10, jlen: 2, klen: 10 });
-
-    for (let i = 0 ; i < 4 ; i++)
+    for (let i = 0 ; i < 1 ; i++)
       setTimeout(() => {
         MCR.sandbox.models.push(
             {
               type   : 'gltf',
-              urlGltf: '/testModels/gltf_json/test0804.json?_i=' + i,
+              urlGltf: '/testModels/gltf/test0804.gltf?_i=' + i,
               option : {
                 position: {
                   x: 0,
-                  y: -2200,
+                  y: -2000,
                   z: 1000 * i
                 }
               }
             }
         );
       }, i * 1000)
-
-    //    MCR.sandbox.models.push(
-    //        {
-    //          type   : 'gltf',
-    //          urlGltf: 'https://threejs.org/examples/models/gltf/OutlinedBox/OutlinedBox.gltf'
-    //        }
-    //    );
   }</script></html>
