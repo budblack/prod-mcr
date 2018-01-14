@@ -29,16 +29,19 @@
             width: calc(100% - 128px);
             height: calc(100% - 128px);
             background: #f0f0f0;
-        }</style></head><body><div class="ext"></div><div class="fram"><div id="mcr"></div></div><script type="text/javascript" src="http://mcr.tool.budblack.me/201801121805/mcr.js?29007baadfa707ca1f8a"></script></body><script>window.onload = async function () {
+        }</style></head><body><div class="ext"></div><div class="fram"><div id="mcr"></div></div><script type="text/javascript" src="http://mcr.tool.budblack.me/201801141624/mcr.js?ebd4277a5b298313e277"></script></body><script>window.onload = async function () {
     if (window.MCR) {
       MCR = await MCR.create('#mcr');
-      setTimeout(drawSth, 1000);
+      setTimeout(drawSth, 4000);
     }
   };
   
   async function drawSth () {
     for (let i = 0 ; i < 1 ; i++)
       setTimeout(() => {
+        MCR.option.mode = 0;
+        MCR.option.afk  = false;
+
         MCR.sandbox.models.push(
             {
               type   : 'gltf',
