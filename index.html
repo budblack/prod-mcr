@@ -29,11 +29,11 @@
             width: calc(100% - 128px);
             height: calc(100% - 128px);
             background: #f0f0f0;
-        }</style></head><body><div class="ext"></div><div class="fram"><div id="mcr"></div></div><script type="text/javascript" src="//mcr.tool.budblack.me/201801162253/mcr.js?f6a339615b90b352b58f"></script></body><script>const TIME_SECONDS = 2000;
+        }</style></head><body><div class="ext"></div><div class="fram"><div id="mcr"></div></div><script type="text/javascript" src="//mcr.tool.budblack.me/201801172228/msign.js?ec9ee5032b0ed94ea725"></script></body><script>const TIME_SECONDS = 2000;
 
   window.onload = async function () {
-    if (window.MCR) {
-      MCR = await MCR.create('#mcr');
+    if (window.msign) {
+      msign = await msign.create('#mcr');
       setTimeout(drawSth, TIME_SECONDS);
     }
   };
@@ -41,10 +41,10 @@
   async function drawSth () {
     for (let i = 0 ; i < 1 ; i++)
       setTimeout(() => {
-        MCR.option.mode = 0;
-        MCR.option.afk  = false;
+        msign.option.mode = 0;
+        msign.option.afk  = false;
 
-        MCR.sandbox.models.push(
+        msign.sandbox.models.push(
             {
               type   : 'gltf',
               urlGltf: '/testModels/gltf/test0804.gltf?_i=' + i,
