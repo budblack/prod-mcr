@@ -1,7 +1,5 @@
-<!DOCTYPE html PUBLIC "-//WAPFORUM//DTD XHTML Mobile 1.0//EN" "http://www.wapforum.org/DTD/xhtml-mobile10.dtd"><html><head><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0"><style>body {
+<!DOCTYPE html><html><head><style>body {
             position: fixed;
-            margin: 0;
-            padding: 0;
             width: 100%;
             height: 100%;
 
@@ -17,26 +15,37 @@
         }
 
         .fram {
+            margin: 64px;
             left: 0;
             right: 0;
             top: 0;
             bottom: 0;
+            /*border-style: dashed;*/
+            /*border-width: 1px;*/
+            /*border-color: #0d8ddb;*/
             box-shadow: 0 0 2px #777;
-            width: calc(100%);
-            height: calc(100%);
+            min-width: 400px;
+            min-height: 300px;
+            width: calc(100% - 128px);
+            height: calc(100% - 128px);
             background: #f0f0f0;
-        }</style></head><body><div class="ext"></div><div class="fram"><div id="mcr"></div></div><script type="text/javascript" src="//mcr.tool.budblack.me/201801252050/msign.js?f4af3507a3530185d7a5"></script></body><script>const TIME_SECONDS = 2000;
+        }</style></head><body><div class="ext"></div><div class="fram"><div id="mcr"></div></div><script type="text/javascript" src="//mcr.tool.budblack.me/201801252246/msign.js?689d522dd54f7f234fb2"></script></body><script>const TIME_SECONDS = 2000;
 
-  window.onload = async function () {
+  window.onload = function () {
     if (window.msign) {
-      msign = await msign.create('#mcr');
-      setTimeout(drawSth, TIME_SECONDS);
+      window.msign
+            .create('#mcr')
+            .then(function (_msign) {
+                    msign = _msign;
+                    setTimeout(drawSth, TIME_SECONDS);
+                  }
+            );
     }
   };
   
-  async function drawSth () {
+  function drawSth () {
     for (let i = 0 ; i < 1 ; i++)
-      setTimeout(() => {
+      setTimeout(function () {
         msign.option.mode = 0;
         msign.option.afk  = false;
 
