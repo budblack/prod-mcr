@@ -29,14 +29,15 @@
             width: calc(100% - 128px);
             height: calc(100% - 128px);
             background: #f0f0f0;
-        }</style></head><body><div class="ext"></div><div class="fram"><div id="mcr"></div></div><script type="text/javascript" src="//mcr.tool.budblack.me/201802271009/msign.js"></script></body><script>const TIME_SECONDS = 2000;
+        }</style></head><body><div class="ext"></div><div class="fram"><div id="mcr"></div></div><script type="text/javascript" src="//mcr.tool.budblack.me/201802271456/msign.js"></script></body><script>const TIME_SECONDS = 2000;
 
   window.onload = function () {
-    if (window.msign) {
-      window.msign
+    if (window.msign && window.msign.mcr) {
+      window.msign.mcr
             .create('#mcr')
-            .then(function (_msign) {
-                    msign = _msign;
+            .then(function (_mcr) {
+                    msign.mcr = _mcr;
+                    // console.log(_msign);
                     setTimeout(drawSth, TIME_SECONDS);
                   }
             );
@@ -46,10 +47,10 @@
   function drawSth () {
     for (let i = 0 ; i < 1 ; i++)
       setTimeout(function () {
-        msign.option.mode = 0;
-        msign.option.afk  = false;
+        msign.mcr.option.mode = 0;
+        msign.mcr.option.afk  = false;
 
-        msign.sandbox.models.push(
+        msign.mcr.sandbox.models.push(
             {
               type   : 'gltf',
               //              urlGltf: 'http://msign.oss.tool.budblack.me/uploads/b447b1ff-3e84-4ed0-8d6c-8fd6e386d0d0.gltf?Expires=1517806509&OSSAccessKeyId=TMP.AQGS8PxOzI0Hjd8z8FcS2AaIkQ7oc0y-6ezgEaTTcxDdmyhvhkwC3vX1EzF-AAAwLAIUNdADI1HuGFOLCHyo2HSn-EsPjrgCFBPwRcHbt0T5lXw3OM-I_utTXVVE&Signature=wLJPpSzWNuE3VEkhQSJLs1TvChc%3D',
@@ -63,5 +64,5 @@
               }
             }
         );
-      }, i * TIME_SECONDS)
+      }, i * TIME_SECONDS);
   }</script></html>
