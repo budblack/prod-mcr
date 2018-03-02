@@ -27,7 +27,7 @@
             height: calc(100% - 128px);
             background: #f0f0f0;
             position: absolute;
-        }</style></head><body><div class="ext"></div><div class="fram"><div id="mcr"></div></div><script type="text/javascript" src="//mcr.tool.budblack.me/201803021016/mcr.js"></script></body><script>const TIME_SECONDS = 2000;
+        }</style></head><body><div class="ext"></div><div class="fram"><div id="mcr"></div></div><script type="text/javascript" src="//mcr.tool.budblack.me/201803021111/mcr.js"></script></body><script>const TIME_SECONDS = 2000;
   let mcr            = null;
   window.onload      = function () {
     if (window.msign && window.msign.mcr) {
@@ -50,45 +50,40 @@
         mcr.option.afk  = false;
 
         // 绘制模型
-        mcr.sandbox.models.push(
-            {
-              type   : 'gltf',
-              //              urlGltf: 'http://msign.oss.tool.budblack.me/uploads/b447b1ff-3e84-4ed0-8d6c-8fd6e386d0d0.gltf?Expires=1517806509&OSSAccessKeyId=TMP.AQGS8PxOzI0Hjd8z8FcS2AaIkQ7oc0y-6ezgEaTTcxDdmyhvhkwC3vX1EzF-AAAwLAIUNdADI1HuGFOLCHyo2HSn-EsPjrgCFBPwRcHbt0T5lXw3OM-I_utTXVVE&Signature=wLJPpSzWNuE3VEkhQSJLs1TvChc%3D',
-              urlGltf: '//mcr.tool.budblack.me/testModels/gltf_json/test0804.json',
-              option : {
-                position: {
-                  x: 0,
-                  y: -2200,
-                  z: 0
-                }
+        // mcr.sandbox.models.push(
+        //     {
+        //       type   : 'gltf',
+        //       //              urlGltf: 'http://msign.oss.tool.budblack.me/uploads/b447b1ff-3e84-4ed0-8d6c-8fd6e386d0d0.gltf?Expires=1517806509&OSSAccessKeyId=TMP.AQGS8PxOzI0Hjd8z8FcS2AaIkQ7oc0y-6ezgEaTTcxDdmyhvhkwC3vX1EzF-AAAwLAIUNdADI1HuGFOLCHyo2HSn-EsPjrgCFBPwRcHbt0T5lXw3OM-I_utTXVVE&Signature=wLJPpSzWNuE3VEkhQSJLs1TvChc%3D',
+        //       urlGltf: '//mcr.tool.budblack.me/testModels/gltf_json/test0804.json',
+        //       option : {
+        //         position: {
+        //           x: 0,
+        //           y: -2200,
+        //           z: 0
+        //         }
+        //       }
+        //     }
+        // );
+
+        let n = 4;
+        while ( n-- ) {
+          let vertices = [];
+          for (let i = 0 ; i < 100 ; i += 0.1) {
+            let x = Math.sin(i) * 100 + (
+                    n * 100
+                ),
+                y = Math.cos(i) * 100,
+                z = i * 10;
+            vertices.push({ x, y, z, r: 255, g: 0, b: 0 });
+          }
+          // 绘制线条
+          mcr.sandbox.lines.push(
+              {
+                title: 'line_' + n,
+                vertices
               }
-            }
-        );
-        // 绘制线条
-        mcr.sandbox.lines.push(
-            {
-              title   : 'line_1',
-              vertices: [
-                { x: 100, z: 200, y: 300, r: 255, g: 0, b: 0 },
-                { x: 100, z: 500, y: 400, r: 255, g: 100, b: 0 },
-                { x: 200, z: 100, y: 500, r: 255, g: 200, b: 0 },
-                { x: 300, z: 100, y: 500, r: 255, g: 255, b: 0 },
-                { x: 400, z: 200, y: 300, r: 128, g: 100, b: 255 },
-                { x: 400, z: 300, y: 100, r: 128, g: 128, b: 0 }
-              ]
-            }
-        );
-        mcr.sandbox.lines.push(
-            {
-              title   : 'line_2',
-              vertices: [
-                { x: 700, z: 400, y: 100 },
-                { x: 700, z: 600, y: 200 },
-                { x: 700, z: 700, y: 300 },
-                { x: 800, z: 700, y: 300 },
-                { x: 900, z: 600, y: 200 }
-              ]
-            }
-        );
+          );
+        }
+
       }, i * TIME_SECONDS);
   }</script></html>
