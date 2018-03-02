@@ -27,7 +27,7 @@
             height: calc(100% - 128px);
             background: #f0f0f0;
             position: absolute;
-        }</style></head><body><div class="ext"></div><div class="fram"><div id="mcr"></div></div><script type="text/javascript" src="//mcr.tool.budblack.me/201803021111/mcr.js"></script></body><script>const TIME_SECONDS = 2000;
+        }</style></head><body><div class="ext"></div><div class="fram"><div id="mcr"></div></div><script type="text/javascript" src="//mcr.tool.budblack.me/201803021147/mcr.js"></script></body><script>const TIME_SECONDS = 2000;
   let mcr            = null;
   window.onload      = function () {
     if (window.msign && window.msign.mcr) {
@@ -70,11 +70,13 @@
           let vertices = [];
           for (let i = 0 ; i < 100 ; i += 0.1) {
             let x = Math.sin(i) * 100 + (
-                    n * 100
+                    (
+                        n - 1.5
+                    ) * 300
                 ),
-                y = Math.cos(i) * 100,
+                y = Math.cos(i) * 100 + 300,
                 z = i * 10;
-            vertices.push({ x, y, z, r: 255, g: 0, b: 0 });
+            vertices.push({ x, y, z, r: n / 3, g: n / 2, b: n });
           }
           // 绘制线条
           mcr.sandbox.lines.push(
