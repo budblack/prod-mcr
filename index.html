@@ -1,7 +1,9 @@
-<!DOCTYPE html><html><head><style>body {
+<!DOCTYPE html><html><head><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telephone=no, email=no"><meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><meta name="format-detection" content="telphone=no, email=no"><meta name="renderer" content="webkit"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="HandheldFriendly" content="true"><meta name="MobileOptimized" content="320"><meta name="screen-orientation" content="portrait"><meta name="x5-orientation" content="portrait"><meta name="full-screen" content="yes"><meta name="x5-fullscreen" content="true"><meta name="browsermode" content="application"><meta name="x5-page-mode" content="app"><meta name="msapplication-tap-highlight" content="no"><style>body {
             position: fixed;
             width: 100%;
             height: 100%;
+
+            margin: 0;
 
             background: linear-gradient(-45deg, #f1f1f1 0, #f1f1f1 25%, #f8ac59 0, #f8ac59 50%, #f1f1f1 0, #f1f1f1 75%, #f8ac59 0, #f8ac59 100%);
             background-size: 16px 16px;
@@ -15,21 +17,20 @@
         }
 
         .fram {
-            margin: 64px;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
+            margin: 0;
+            padding: 0;
             box-shadow: 0 0 2px #777;
-            min-width: 400px;
-            min-height: 300px;
-            width: calc(100% - 128px);
-            height: calc(100% - 128px);
+            width: 100%;
+            height: 100%;
             background: #f0f0f0;
             position: absolute;
-        }</style></head><body><div class="ext"></div><div class="fram"><div id="mcr"></div></div><script type="text/javascript" src="//mcr.tool.budblack.me/201803021948/mcr.js"></script></body><script>const TIME_SECONDS = 2000;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }</style></head><body><div class="ext"></div><div class="fram"><div id="mcr"></div></div><script type="text/javascript" src="//mcr.tool.budblack.me/201803100026/mcr.js"></script></body><script>const TIME_SECONDS = 2000;
   let mcr            = null;
   window.onload      = function () {
+
     if (window.msign && window.msign.mcr) {
       mcr = msign.mcr;
       mcr.create('#mcr')
@@ -37,6 +38,14 @@
                  mcr = msign.mcr = _mcr;
                  // console.log(_msign);
                  setTimeout(drawSth, TIME_SECONDS);
+
+           let fram = document.getElementsByClassName('fram')[0],
+               h    = window.getComputedStyle(fram, null).getPropertyValue('height'),
+               w    = window.getComputedStyle(fram, null).getPropertyValue('width');
+
+           fram.style.transform = 'translate(-50%, -50%) rotate(90deg)';
+           fram.style.width     = h;
+           fram.style.height    = w;
                }
          );
     }
@@ -52,10 +61,10 @@
         // 绘制模型
         // mcr.sandbox.models.push(
         //     {
-        //       type   : 'gltf',
+        //       type  : 'gltf',
         //       //              urlGltf: 'http://msign.oss.tool.budblack.me/uploads/b447b1ff-3e84-4ed0-8d6c-8fd6e386d0d0.gltf?Expires=1517806509&OSSAccessKeyId=TMP.AQGS8PxOzI0Hjd8z8FcS2AaIkQ7oc0y-6ezgEaTTcxDdmyhvhkwC3vX1EzF-AAAwLAIUNdADI1HuGFOLCHyo2HSn-EsPjrgCFBPwRcHbt0T5lXw3OM-I_utTXVVE&Signature=wLJPpSzWNuE3VEkhQSJLs1TvChc%3D',
-        //       urlGltf: '//mcr.tool.budblack.me/testModels/gltf_json/test0804.json',
-        //       option : {
+        //       url   : '//mcr.tool.budblack.me/testModels/gltf_json/test0804.json',
+        //       option: {
         //         position: {
         //           x: 0,
         //           y: -2200,
@@ -64,28 +73,53 @@
         //       }
         //     }
         // );
-
-        let n = 4;
-        while ( n-- ) {
-          let vertices = [];
-          for (let i = 0 ; i < 100 ; i += 0.1) {
-            let x = Math.sin(i) * 100 + (
-                    (
-                        n - 1.5
-                    ) * 300
-                ),
-                y = Math.cos(i) * 100 + 300,
-                z = i * 10;
-            vertices.push({ x, y, z, r: n / 3, g: n / 2, b: n });
-          }
-          // 绘制线条
-          mcr.sandbox.lines.push(
-              {
-                title: 'line_' + n,
-                vertices
+        //
+        mcr.sandbox.models.push(
+            {
+              type  : 'gltf',
+              url   : '/testModels/gltf/keting.gltf',
+              option: {
+                position: {
+                  x: 0,
+                  y: 1400,
+                  z: 0
+                }
               }
-          );
-        }
+            },
+            // {
+            //   type  : 'fbx',
+            //   url   : '/testModels/fbx/keting.fbx',
+            //   option: {
+            //     position: {
+            //       x: 0,
+            //       y: 1400,
+            //       z: 0
+            //     }
+            //   }
+            // }
+        );
+        //
+        // let n = 4;
+        // while ( n-- ) {
+        //   let vertices = [];
+        //   for (let i = 0 ; i < 100 ; i += 0.1) {
+        //     let x = Math.sin(i) * 100 + (
+        //             (
+        //                 n - 1.5
+        //             ) * 300
+        //         ),
+        //         y = Math.cos(i) * 100 + 300,
+        //         z = i * 10;
+        //     vertices.push({ x, y, z, r: n / 3, g: n / 2, b: n });
+        //   }
+        //   // 绘制线条
+        //   mcr.sandbox.lines.push(
+        //       {
+        //         title: 'line_' + n,
+        //         vertices
+        //       }
+        //   );
+        // }
 
       }, i * TIME_SECONDS);
   }</script></html>
