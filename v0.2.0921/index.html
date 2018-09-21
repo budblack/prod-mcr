@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><style>body {
+            position: fixed;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+
+            background: linear-gradient(-45deg, #f1f1f1 0, #f1f1f1 25%, #f8ac59 0, #f8ac59 50%, #f1f1f1 0, #f1f1f1 75%, #f8ac59 0, #f8ac59 100%);
+            background-size: 16px 16px;
+
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        .fram {
+            margin: 0;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            box-shadow: 0 0 2px #777;
+            min-width: 400px;
+            min-height: 300px;
+            width: 100%;
+            height: 100%;
+            background: #f0f0f0;
+            position: absolute;
+        }</style><link rel="icon" sizes="any" href="//mcr.msign.net/favicon.svg"></head><body><div class="ext"></div><div class="fram"><div id="m3"></div></div><script type="text/javascript" src="//m3.msign.net/v0.2.0921/M3.js"></script></body><script>window.onload = async function () {
+    if (window.MSIGN) {
+      let {M3}=MSIGN;
+      await M3.create('#m3')
+    }
+};</script></html>
